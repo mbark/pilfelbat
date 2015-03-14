@@ -27,7 +27,8 @@ function drawMap(data) {
 
   $('#map').vectorMap({
     map: 'se_merc_en',
-    backgroundColor: 'transparent', /*#e1f7ff*/
+    backgroundColor: 'transparent',
+    zoomButtons : false,
     regionsSelectable: true,
     regionsSelectableOne: true,
     regionStyle: {
@@ -76,7 +77,7 @@ function drawMap(data) {
          //define the array of country data
          values: happiness,
          legend: {
-          vertical: true,
+          horisontal: true,
           cssClass: 'jvectormap-legend-icons'
           }
        }]
@@ -101,7 +102,7 @@ function drawMap(data) {
       '</div>'+
       '<div class="row" style="margin-bottom:50px;">'+
       '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b><br/>' + income + '00 SEK</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst/år: </b><br/>' + income + '00 SEK</p></div>'+
       '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter turqcolor" style="margin-left:7.5px;"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b><br/>' + working + '%</p></div>'+
       '</div>'+
