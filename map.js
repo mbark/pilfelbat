@@ -87,15 +87,15 @@ function drawMap(data) {
       '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
       '</div>'+
       '<div class="row" style="margin-bottom:50px;">'+
-      '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
+      '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter turqcolor"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b>' + income + '</p></div>'+
-      '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter" style="margin-left:7.5px;"></i></div>'+
+      '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter turqcolor" style="margin-left:7.5px;"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + working + '</p></div>'+
       '</div>'+
       '<div class="row">'+
-      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter""></i></div>'+
+      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter turqcolor"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Sjukfall: </b>' + unhealthy + '</p></div>'+
-      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
+      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter turqcolor"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + '</p></div>'+
       '</div>'
       $('#stats').html(htmlString);
