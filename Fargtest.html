@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lyckokollen</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="jquery-jvectormap-2.0.2.min.js"></script>
+  <script src="jquery-jvectormap-se-merc-en.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<body bgcolor="#21CCBB">
+  <div class="container" style="color:#FFFBED">
+    <div class="row">
+      <div class="col-md-4">hej</div>
+      <div class="col-md-4">LYCKOKOLLEN</div>
+      <div class="col-md-4">hej</div>
+    </div>
+    <div class="row" id="map" style="width: 400px; height: 500px"></div>
+  </div>
+    <script>
+
+      $(function(){
+
+        var data = {"SE-N": "35", "SE-D": "15", "SE-F": "17", "SE-H": "20", "SE-W": "10"}
+
+        $('#map').vectorMap({
+          map: 'se_merc_en',
+          backgroundColor: '#FFFBED', /*#e1f7ff*/
+          regionsSelectable: true,
+          regionsSelectableOne: true,
+          regionStyle: {
+            initial: {
+                fill: 'white',
+                "fill-opacity": 1,
+                stroke: 'black',
+                "stroke-width": 2,
+                "stroke-opacity": 1
+            },
+            hover: { // other style when hovering a region
+                "fill-opacity": 0.5
+            },
+            selected: { // other style when a region is selected
+                fill: 'yellow'
+            },
+            selectedHover: {} // other styles when hovering a selected region
+          },
+          
+          //Text on label shown when hovering
+          //event.preventDefault(); // remove label 
+          //label.html('helo'); //Set label text
+          onRegionTipShow: function(event, label, code){ 
+            label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
+          },
+
+          series: {
+             regions: [{
+               //define the range of color values
+               scale: ['#DEEBF7', '#08519C'],
+               //define the function that maps data to color range polynomial/linear
+               normalizeFunction: 'linear',
+               //define the coloration method
+               attribute: 'fill',
+               //define the array of country data
+               values: data
+             }]
+           }
+
+        });
+
+      /*End of function*/
+      });
+    
+
+  </script>
+</body>
+</html>
