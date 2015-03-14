@@ -18,10 +18,17 @@ function drawMap(mapData) {
       },
       selected: { // other style when a region is selected
         stroke: "#FCFCC9",
-        "stroke-width": 2,
-        "stroke-opacity": 1
+        "stroke-width": 4,
       },
       selectedHover: {} // other styles when hovering a selected region
+    },
+    regionLabelStyle: {
+      initial: {
+        fill: 'red'
+      },
+      hover: {
+        fill: 'blue'
+      }
     },
 
     //Text on label shown when hovering
@@ -60,15 +67,15 @@ function drawMap(mapData) {
         var htmlString = 
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-            '<div class="col-md-4">Medelinkomst: </div>'+
+            '<div class="col-md-4">Medelinkomst: '+DATA+'</div>'+
             '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
-            '<div class="col-md-4">Andel med jobb: </div>'+
+            '<div class="col-md-4">Andel sysselsatta: '+DATA+'</div>'+
           '</div>'+
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-            '<div class="col-md-4">Sjukhusvistelser: <br/>Dödsfall: </div>'+
+            '<div class="col-md-4">Sjukfall: '+DATA+'</div>'+
             '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
-            '<div class="col-md-4"></div>'+
+            '<div class="col-md-4">Nygifta: '+DATA+'</div>'+
           '</div>'
         $('#stats').html(htmlString);
     }
