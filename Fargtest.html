@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>jVectorMap demo</title>
+  <title>Lyckokollen</title>
   <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="jquery-jvectormap-2.0.2.min.js"></script>
@@ -13,6 +13,8 @@
   <script>
 
     $(function(){
+
+      var data = {"SE-N": "35", "SE-D": "15", "SE-F": "17", "SE-H": "20", "SE-W": "10"}
 
       $('#map').vectorMap({
         map: 'se_merc_en',
@@ -42,45 +44,19 @@
         onRegionTipShow: function(event, label, code){ 
           label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
         },
+
         series: {
-          regions: [{
-            values: {
-                'SE-D': '#3e9d01',
-                'SE-N': '#4b93c1',
-                'SE-M': '#c1a14b'
-            }
-          }]
-        }
-        /*series: {
-          regions: [{
-            values: {
-              'Västra Götaland': '15',
-              'Halland': '12',
-              'Skåne': '4',
-              'Blekinge': '23',
-              'Gotland': '5'
-            },
-            scale: ['#C8EEFF', '#0071A4'],
-            min: '4',
-            max: '23',
-            normalizeFunction: 'polynomial'
-          }]
-        }*/
-        /*values = {};
-
-        values['SE-N'] = '5';
-        values['SE-S'] = '5';
-        values['SE-W'] = '5';
-        values['SE-F'] = '37';
-        values['SE-H'] = '83';
-
-        $('#map').vectorMap({
-          values: values,
-          scaleColors: ['#C8EEFF', '#006491'], // two colors: for minimum and maximum values 
-          normalizeFunction: 'polynomial',
-          hoverOpacity: 0.7,
-          hoverColor: false
-        });*/
+           regions: [{
+             //define the range of color values
+             scale: ['#DEEBF7', '#08519C'],
+             //define the function that maps data to color range polynomial/linear
+             normalizeFunction: 'linear',
+             //define the coloration method
+             attribute: 'fill',
+             //define the array of country data
+             values: data
+           }]
+         }
 
       });
 
