@@ -80,8 +80,6 @@ function meanValues(data) {
 	for(var key in data) {
 		map[key] = findMeanValue(data[key]);
 	}
-	console.log(data);
-	console.log(map);
 	return map;
 }
 
@@ -96,4 +94,9 @@ function happinessScore(data, means) {
 	}
 
 	return map;
+}
+
+function getSortedKeys(obj) {
+    var keys = []; for(var key in obj) keys.push(key);
+    return keys.sort(function(a,b){return parseInt(obj[b])-parseInt(obj[a])});
 }

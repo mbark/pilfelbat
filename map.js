@@ -19,6 +19,12 @@ function drawMap(data) {
   regionName = "";
   happiness = happinessScore(mergedData, means);
 
+  happinessSorted = getSortedKeys(happiness);
+
+  for(i = 0; i<happinessSorted.length; i++) {
+    console.log(happinessSorted[i] + " " + happiness[happinessSorted[i]]);
+  }
+
   $('#map').vectorMap({
     map: 'se_merc_en',
     backgroundColor: 'transparent', /*#e1f7ff*/
