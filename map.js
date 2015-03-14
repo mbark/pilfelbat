@@ -23,7 +23,8 @@ function drawMap(data) {
 
   $('#map').vectorMap({
     map: 'se_merc_en',
-    backgroundColor: 'transparent', /*#e1f7ff*/
+    backgroundColor: 'transparent',
+    zoomButtons : false,
     regionsSelectable: true,
     regionsSelectableOne: true,
     regionStyle: {
@@ -38,7 +39,7 @@ function drawMap(data) {
         "fill-opacity": 0.5
       },
       selected: { // other style when a region is selected
-        fill: "#01AEA1",
+        fill: "#ffbba1",
         //stroke: "#FCFCC9",
         //"stroke-width": 4,
       },
@@ -58,22 +59,23 @@ function drawMap(data) {
         label.html('<div id="tooltip"><b>'+label.html()+'s län</b></br> Lyckoscore: '+ happiness[code].toFixed(3));
       }
     },
-    /*onRegionClick: function(event, code){
-      event.preventDefault();
-      // your "some code" of region selected
-    },*/
 
     series: {
      regions: [{
          //define the range of color values
          //Blue scale ['#DEEBF7', '#08519C']
-         scale: ['#DEEBF7', '#08519C'],
+         //Green/teal scale ['#F5FFFA', '#008080']
+         scale: ['#F5FFFA', '#008080'],
          //define the function that maps data to color range polynomial/linear
-         normalizeFunction: 'linear',
+         normalizeFunction: 'polynomial',
          //define the coloration method
          attribute: 'fill',
          //define the array of country data
-         values: happiness
+         values: happiness,
+         legend: {
+          vertical: true,
+          cssClass: 'jvectormap-legend-icons'
+          }
        }]
      },
 

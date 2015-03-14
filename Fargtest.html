@@ -21,7 +21,7 @@
 
   <style>
     body {
-      background-color: #D4F4F2;
+      background-color: #D1ECE8;
     }
 
   #headerbg{
@@ -39,6 +39,12 @@
     height:500px;
   }
 
+  #bottomtext{
+    background-color: #f9f4f1;
+    color: #ffbba1;
+    font-family: 'Arvo', serif
+  }
+
  .center {
     margin-left: auto;
     margin-right: auto;
@@ -47,7 +53,7 @@
   h1{
     font-family: 'Arvo', serif;
     font-style:bold;
-    color:#bba1ff;
+    color:#ffbba1;
   }
 
   .vertcenter{
@@ -70,9 +76,15 @@
     padding-bottom: 20px;
   }
 
-.turqcolor{
-  color:#01aea1;
-}
+  .turqcolor{
+    color:#01aea1;
+  }
+  .jvectormap-legend-icons {
+    background: #FBFAF5;
+    color: #000000;
+    font-family: 'Arvo';
+    /*border: black 2px solid;*/
+  }
 
   </style>
   
@@ -103,6 +115,9 @@
     <div class="row">
       <div class="col-md-5" id="map"></div>
       <div class="col-md-7" id="stats"><h2 class="vertcenter center">Lyckokollen - tjänsten som håller koll på hur lyckligt Sverige är.</h2><h3 class="vertcenter center">Håll muspekaren över ett län för att se lyckoscore.<br>Tryck på ett län för att se ytterligare lyckostatistik.</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center" id="bottomtext"><p style="font-size:12px;">Kodat av: Caroline Arkenson, Martin Barksten och Caroline Lindström.</br>GitHub-projekt: <a href="https://github.com/mbark/pilfelbat">github.com/mbark/pilfelbat</a></br>Data gäller för år 2013. Källa: SCB.</p></div>
     </div>
   </div>
 
