@@ -55,11 +55,11 @@ function drawMap(data) {
     onRegionTipShow: function(event, label, code){   
       if (label.html() == 'Orebro') { 
         regionName = 'Örebro';
-        label.html('<div id="tooltip"><b>Örebros län</b></br> Score: '+ happiness[code].toFixed(3)); //Set label text
+        label.html('<div id="tooltip"><b>Örebros län</b></br> Lyckoscore: '+ happiness[code].toFixed(3)); //Set label text
       }
       else{
         regionName = label.html();
-        label.html('<div id="tooltip"><b>'+label.html()+'s län</b></br> Score: '+ happiness[code].toFixed(3));
+        label.html('<div id="tooltip"><b>'+label.html()+'s län</b></br> Lyckoscore: '+ happiness[code].toFixed(3));
       }
     },
     /*onRegionClick: function(event, code){
@@ -106,9 +106,9 @@ function drawMap(data) {
       '</div>'+
       '<div class="row">'+
       '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Antal friska: </b>' + unhealthy + '%</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Antal friska: </b><br/>' + unhealthy + '%</p></div>'+
       '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + '%</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b><br/>' + newlyMarried + '%</p></div>'+
       '</div>'
       $('#stats').html(htmlString);
     }
