@@ -18,9 +18,7 @@ function calculateHappines(data) {
 
 function drawMap(data) {
   mergedData = mergeData(data);
-  console.log(data);
   mapData = calculateHappines(data);
-  console.log(mapData);
   regionName = "";
 
   $('#map').vectorMap({
@@ -50,7 +48,6 @@ function drawMap(data) {
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
       regionName = label.html();
-      console.log(mapData);
       label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
       
     },
@@ -78,6 +75,11 @@ function drawMap(data) {
       }
 
       regionData = mergedData[label];
+      income = regionData["money"];
+      people = regionData["people"];
+      working = (regionData["work"]/people*100).toFixed(3);
+      unhealthy = (regionData["health"]/people*100).toFixed(3);
+      newlyMarried = (regionData["married"]/people*100).toFixed(3);
 
       var htmlString = 
       '<div class="row">'+
@@ -85,15 +87,15 @@ function drawMap(data) {
       '</div>'+
       '<div class="row">'+
       '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-      '<div class="col-md-4">Medelinkomst: ' + regionData["money"] + '</div>'+
+      '<div class="col-md-4">Medelinkomst: ' + income + '</div>'+
       '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
-      '<div class="col-md-4">Andel sysselsatta: ' + regionData["work"] + '</div>'+
+      '<div class="col-md-4">Andel sysselsatta: ' + working + '%</div>'+
       '</div>'+
       '<div class="row">'+
       '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-      '<div class="col-md-4">Sjukfall: ' + regionData["health"] + '</div>'+
+      '<div class="col-md-4">Sjukfall: ' + unhealthy + '%</div>'+
       '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
-      '<div class="col-md-4">Nygifta: <p id="married"></p>' + regionData["married"] + '</div>'+
+      '<div class="col-md-4">Nygifta: <p id="married"></p>' + newlyMarried + '%</div>'+
       '</div>'
       $('#stats').html(htmlString);
     }
