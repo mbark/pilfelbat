@@ -45,14 +45,6 @@ function drawMap(data) {
       },
       selectedHover: {} // other styles when hovering a selected region
     },
-    regionLabelStyle: {
-      initial: {
-        fill: 'red'
-      },
-      hover: {
-        fill: 'blue'
-      }
-    },
 
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
