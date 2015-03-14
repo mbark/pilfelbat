@@ -17,7 +17,7 @@ function drawMap(mapData) {
         "fill-opacity": 0.5
       },
       selected: { // other style when a region is selected
-        fill: 'yellow'
+        fill: 'red'
       },
       selectedHover: {} // other styles when hovering a selected region
     },
@@ -75,9 +75,13 @@ $(document).ready(function() {
     data["money"] = money;
     health(function(health) {
       data["health"] = health;
-      drawMap(health);
-
-      console.log(data);
+      people(function(people) {
+        data["people"] = people;
+        married(function(married) {
+          data["married"] = married;
+          drawMap(married);
+        })
+      });
     });
   });
 });

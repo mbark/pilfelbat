@@ -1,5 +1,5 @@
-function people(callback) {
-	url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101A/BefolkningNy";
+function married(callback) {
+	url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101L/CivilstandAndring";
 	query = {
 		"query": [
 		{
@@ -32,11 +32,11 @@ function people(callback) {
 			}
 		},
 		{
-			"code": "ContentsCode",
+			"code": "Civilstand",
 			"selection": {
 				"filter": "item",
 				"values": [
-				"BE0101N1"
+				"G"
 				]
 			}
 		},
@@ -68,5 +68,4 @@ function people(callback) {
 
 		callback(mapping);
 	});
-
-};
+}
