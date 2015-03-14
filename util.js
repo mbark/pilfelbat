@@ -97,6 +97,36 @@ function happinessScore(data, means) {
 }
 
 function getSortedKeys(obj) {
-    var keys = []; for(var key in obj) keys.push(key);
-    return keys.sort(function(a,b){return parseInt(obj[b])-parseInt(obj[a])});
+	var arr = [];
+	for(var key in obj) {
+		tmp = {};
+		tmp[key] = obj[key];
+		arr.push(tmp);
+	}
+
+	sorted = arr.sort(function(a,b) {
+		x = 0;
+		y = 0;
+		for(var k in a) {
+			x = a[k];
+		}
+		for(var k in b) {
+			y = b[k];
+		}
+		return y-x;
+	});
+
+	console.log(sorted);
+
+	rankings = {};
+	for(i = 0; i<sorted.length; i++) {
+		name = "";
+		for(var k in sorted[i]) {
+			name = k;
+		}
+
+		rankings[name] = i;
+	}
+
+	return rankings;
 }

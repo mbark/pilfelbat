@@ -19,11 +19,7 @@ function drawMap(data) {
   regionName = "";
   happiness = happinessScore(mergedData, means);
 
-  happinessSorted = getSortedKeys(happiness);
-
-  for(i = 0; i<happinessSorted.length; i++) {
-    console.log(happinessSorted[i] + " " + happiness[happinessSorted[i]]);
-  }
+  happinessRankings = getSortedKeys(happiness);
 
   $('#map').vectorMap({
     map: 'se_merc_en',
@@ -90,33 +86,24 @@ function drawMap(data) {
       income = regionData["money"];
       people = regionData["people"];
       working = (regionData["work"]/people*100).toFixed(1);
-      unhealthy = (regionData["health"]/people*100).toFixed(1);
+      healthy = (regionData["health"]/people*100).toFixed(1);
       newlyMarried = (regionData["married"]/people*100).toFixed(1);
+      happinessRank = happinessRankings[label];
 
-      var htmlString = 
-      '<div class="row" style="margin-bottom:75px;">'+
-      '<div class="col-md-12"><h2>Lyckostatistik för <b>'+regionName+'s län</b></h2>'+
-      '<h3>Antal invånare: '+people+'</h3></div>'+
-      '</div>'+
-      '<div class="row" style="margin-bottom:50px;">'+
-      '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b><br/>' + income + '00 SEK</p></div>'+
-      '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter turqcolor" style="margin-left:7.5px;"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b><br/>' + working + '%</p></div>'+
-      '</div>'+
-      '<div class="row">'+
-      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Antal friska: </b><br/>' + unhealthy + '%</p></div>'+
-      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b><br/>' + newlyMarried + '%</p></div>'+
-      '</div>'+
-      '<div class="row">'+
-      '<div class="col-md-2"><i class="fa fa-trophy fa-5x" style="color:#fbd57a;"></i></div>'+
-      '<div class="col-md-10"><h1 class="vertcenter"><b>#</b></h1></div>'+
-      '</div>'
-      $('#stats').html(htmlString);
+      $.ajax({ 
+        url: "infoBox.html",
+        dataType: "html",
+      }).done(function(responseHtml) {
+       $("#stats").html(responseHtml);
+       $("#people").text("Antal invånare: " + people);
+       $("#income").text(income*1000 + " SEK / år");
+       $("#working").text(working + "%");
+       $("#healthy").text(healthy + "%");
+       $("#newlyMarried").text(newlyMarried + "%");
+       $("#rank").text('#' + (happinessRank+1));
+       $("#region-name").text(regionName + "s län");
+     });
     }
-
   });
 }
 
