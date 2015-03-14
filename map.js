@@ -41,8 +41,7 @@ function drawMap(data) {
       },
       selected: { // other style when a region is selected
         stroke: "#FCFCC9",
-        "stroke-width": 2,
-        "stroke-opacity": 1
+        "stroke-width": 4,
       },
       selectedHover: {} // other styles when hovering a selected region
     },
@@ -86,6 +85,7 @@ function drawMap(data) {
         '<div class="row" style="margin-bottom:75px;">'+
             '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
             '</div>'+
+
           '<div class="row" style="margin-bottom:50px;">'+
             '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
             '<div class="col-md-4" style="padding-left: -16px; padding-right:-16px;"><p class="vertcenter">Medelinkomst:</p> </div>'+
@@ -97,6 +97,7 @@ function drawMap(data) {
             '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter">Sjukhusvistelser: <br/>Dödsfall: </p></div>'+
             '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
             '<div class="col-md-4"></div>'+
+
           '</div>'
         $('#stats').html(htmlString);
     }
