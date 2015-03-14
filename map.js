@@ -108,8 +108,11 @@ $(document).ready(function() {
         data["people"] = people;
         married(function(married) {
           data["married"] = married;
-          drawMap(data);
-        })
+          work(function(work) {
+            data["work"] = work;
+            drawMap(data);
+          });
+        });
       });
     });
   });
