@@ -25,7 +25,7 @@ function drawMap(mapData) {
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
-      label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
+      label.html('<b>'+label.html()+'</b></br>'+ mapData[code]);
     },
 
     series: {
