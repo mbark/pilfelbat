@@ -1,5 +1,26 @@
+function mergeData(data) {
 
-function drawMap(mapData) {
+  console.log(data);
+  map = {};
+  for (var key in data["people"]) {
+    arr = [];
+
+    for(k2 in data) {
+      m = {}
+      m[k2] = data[k2][key];
+
+      arr.push(m);;
+    }
+
+    map[key] = arr;
+  }
+
+  console.log(map);
+  return data[0];
+}
+
+function drawMap(data) {
+  mapData = mergeData(data);
   var regionName = "";
 
   $('#map').vectorMap({
@@ -42,10 +63,15 @@ function drawMap(mapData) {
         console.log("Deselected " + label);
       }
     },
+    /*onRegionClick: function(event, code){
+      event.preventDefault();
+      // your "some code" of region selected
+    },*/
 
     series: {
      regions: [{
          //define the range of color values
+         //Blue scale ['#DEEBF7', '#08519C']
          scale: ['#DEEBF7', '#08519C'],
          //define the function that maps data to color range polynomial/linear
          normalizeFunction: 'linear',
@@ -68,25 +94,32 @@ function drawMap(mapData) {
           '</div>'+
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-            '<div class="col-md-4"></div>'+
+            '<div class="col-md-4">Sjukhusvistelser: <br/>Dödsfall: </div>'+
             '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
             '<div class="col-md-4"></div>'+
           '</div>'
         $('#stats').html(htmlString);
     }
 
-   });
+  });
 }
 
 $(document).ready(function() {
-  data = [];
+  data = {};
   money(function(money) {
     data["money"] = money;
     health(function(health) {
       data["health"] = health;
-      drawMap(health);
-
-      console.log(data);
+      people(function(people) {
+        data["people"] = people;
+        married(function(married) {
+          data["married"] = married;
+          work(function(work) {
+            data["work"] = work;
+            drawMap(data);
+          });
+        });
+      });
     });
   });
 });
