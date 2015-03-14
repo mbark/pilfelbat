@@ -69,7 +69,7 @@ function work(callback) {
 
 		for(i = 0; i<resp.data.length; i++) {
 			key = resp.data[i].key[0];
-			val = resp.data[i].values[0]*100;
+			val = resp.data[i].values[0]*1000;
 
 			mapping[indexToLanCode(key)] = val
 		}
