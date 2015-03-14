@@ -83,19 +83,19 @@ function drawMap(data) {
      },
      onRegionSelected: function(){
         var htmlString = 
-        '<div class="row">'+
+        '<div class="row" style="margin-bottom:75px;">'+
             '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
             '</div>'+
-          '<div class="row">'+
-            '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-            '<div class="col-md-4">Medelinkomst: </div>'+
-            '<div class="col-md-2"><i class="fa fa-building-o fa-5x" style="padding-left: 7.5px;"></i></div>'+
-            '<div class="col-md-4">Andel med jobb: </div>'+
+          '<div class="row" style="margin-bottom:50px;">'+
+            '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
+            '<div class="col-md-4" style="padding-left: -16px; padding-right:-16px;"><p class="vertcenter">Medelinkomst:</p> </div>'+
+            '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter" style="padding-left: 7.5px;"></i></div>'+
+            '<div class="col-md-4" style="padding-left: -16px; padding-right:-16px;"><p class="vertcenter">Andel med jobb: </p></div>'+
           '</div>'+
           '<div class="row">'+
-            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-            '<div class="col-md-4">Sjukhusvistelser: <br/>Dödsfall: </div>'+
-            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
+            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter"></i></div>'+
+            '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter">Sjukhusvistelser: <br/>Dödsfall: </p></div>'+
+            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
             '<div class="col-md-4"></div>'+
           '</div>'
         $('#stats').html(htmlString);
