@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="jquery-jvectormap-2.0.2.min.js"></script>
+  <script src="jquery-jvectormap-se-merc-en.js"></script>
+</head>
+
+<body>
+  <div id="map" style="width: 600px; height: 500px"></div>
+  <script>
+
+    $(function(){
+
+      $('#map').vectorMap({
+        map: 'se_merc_en',
+        backgroundColor: 'transparent', /*#e1f7ff*/
+
+        regionStyle: {
+          initial: {
+              fill: 'white',
+              "fill-opacity": 1,
+              stroke: 'black',
+              "stroke-width": 2,
+              "stroke-opacity": 1
+          },
+          hover: { // other style when hovering a region
+              "fill-opacity": 0.5
+          },
+          selected: { // other style when a region is selected
+              fill: 'yellow'
+          },
+          selectedHover: {} // other styles when hovering a selected region
+        },
+        
+        //Text on label shown when hovering
+        //event.preventDefault(); // remove label 
+        //label.html('helo'); //Set label text
+        onRegionTipShow: function(event, label, code){ 
+          label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
+        },
+        series: {
+          regions: [{
+            values: {
+                'SE-D': '#3e9d01',
+                'SE-N': '#4b93c1',
+                'SE-M': '#c1a14b'
+            }
+          }]
+        }
+        /*series: {
+          regions: [{
+            values: {
+              'Västra Götaland': '15',
+              'Halland': '12',
+              'Skåne': '4',
+              'Blekinge': '23',
+              'Gotland': '5'
+            },
+            scale: ['#C8EEFF', '#0071A4'],
+            min: '4',
+            max: '23',
+            normalizeFunction: 'polynomial'
+          }]
+        }*/
+        /*values = {};
+
+        values['SE-N'] = '5';
+        values['SE-S'] = '5';
+        values['SE-W'] = '5';
+        values['SE-F'] = '37';
+        values['SE-H'] = '83';
+
+        $('#map').vectorMap({
+          values: values,
+          scaleColors: ['#C8EEFF', '#006491'], // two colors: for minimum and maximum values 
+          normalizeFunction: 'polynomial',
+          hoverOpacity: 0.7,
+          hoverColor: false
+        });*/
+
+      });
+
+    /*End of function*/
+    });
+
+
+  </script>
+</body>
+</html>
