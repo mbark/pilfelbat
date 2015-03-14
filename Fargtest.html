@@ -23,6 +23,10 @@
   #headerbg{
     background-color: #FFFBED;
   }
+  #map{
+    height: 500px;
+    width: 400px;
+  }
 
   </style>
   
@@ -41,7 +45,7 @@
       <div class="col-md-4">---</div>
     </div>
     <div class="row">
-      <div class="col-md-5" id="map" style="width: 600px; height: 500px"></div>
+      <div class="col-md-5" id="map" ></div>
       <div class="col-md-7" id="stats"></div>
     </div>
 
@@ -125,10 +129,13 @@
                //define the array of country data
                values: data
              }]
-           }
-          /*onRegionSelected: function(){
+          },
+          onRegionSelected: function(){
             //When region is selected
-          }*/
+            var htmlstring = 'hej';
+            $('#stats').text('html content')
+            //$( this ).text( htmlString );
+          }
 
         //End of .vectorMap
         });
