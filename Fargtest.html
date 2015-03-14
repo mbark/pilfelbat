@@ -40,7 +40,13 @@
       <div class="col-md-4">LYCKOKOLLEN</div>
       <div class="col-md-4">---</div>
     </div>
+    <div class="row">
+      <div class="col-md-5" id="map" style="width: 600px; height: 500px"></div>
+      <div class="col-md-7" id="stats"></div>
+    </div>
+
   </div>
+
   <script>
 
     $(function(){
@@ -120,9 +126,9 @@
                values: data
              }]
            }
-          onRegionSelected: function(){
+          /*onRegionSelected: function(){
             //When region is selected
-          }
+          }*/
 
         //End of .vectorMap
         });
@@ -132,6 +138,5 @@
 
 
   </script>
-
 </body>
 </html>
