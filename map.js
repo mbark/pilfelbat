@@ -12,7 +12,6 @@ function mergeData(data) {
       arr.push(m);;
     }
 
-    console.log(arr);
     map[key] = arr;
   }
 
@@ -40,7 +39,9 @@ function drawMap(data) {
         "fill-opacity": 0.5
       },
       selected: { // other style when a region is selected
-        fill: 'red'
+        stroke: "#FCFCC9",
+        "stroke-width": 2,
+        "stroke-opacity": 1
       },
       selectedHover: {} // other styles when hovering a selected region
     },
@@ -59,10 +60,15 @@ function drawMap(data) {
         console.log("Deselected " + label);
       }
     },
+    /*onRegionClick: function(event, code){
+      event.preventDefault();
+      // your "some code" of region selected
+    },*/
 
     series: {
      regions: [{
          //define the range of color values
+         //Blue scale ['#DEEBF7', '#08519C']
          scale: ['#DEEBF7', '#08519C'],
          //define the function that maps data to color range polynomial/linear
          normalizeFunction: 'linear',
@@ -73,20 +79,20 @@ function drawMap(data) {
        }]
      },
      onRegionSelected: function(){
-      var htmlString = 
-      '<div class="row">'+
-      '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-      '<div class="col-md-4">Medelinkomst: </div>'+
-      '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
-      '<div class="col-md-4">Andel med jobb: </div>'+
-      '</div>'+
-      '<div class="row">'+
-      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-      '<div class="col-md-4"></div>'+
-      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
-      '<div class="col-md-4"></div>'+
-      '</div>'
-      $('#stats').html(htmlString);
+        var htmlString = 
+          '<div class="row">'+
+            '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
+            '<div class="col-md-4">Medelinkomst: </div>'+
+            '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
+            '<div class="col-md-4">Andel med jobb: </div>'+
+          '</div>'+
+          '<div class="row">'+
+            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
+            '<div class="col-md-4">Sjukhusvistelser: <br/>Dödsfall: </div>'+
+            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
+            '<div class="col-md-4"></div>'+
+          '</div>'
+        $('#stats').html(htmlString);
     }
 
   });
