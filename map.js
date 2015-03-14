@@ -12,14 +12,12 @@ function mergeData(data) {
   return map;
 }
 
-function calculateHappines(data) {
-  return data["people"];
-}
-
 function drawMap(data) {
+  means = meanValues(data);
   mergedData = mergeData(data);
-  mapData = calculateHappines(data);
+  mapData = data["people"];
   regionName = "";
+  happiness = happinessScore(mergedData, means);
 
   $('#map').vectorMap({
     map: 'se_merc_en',
