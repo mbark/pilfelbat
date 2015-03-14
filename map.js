@@ -2,7 +2,7 @@
 function drawMap(mapData) {
   $('#map').vectorMap({
     map: 'se_merc_en',
-    backgroundColor: '#FBFAF5', /*#e1f7ff*/
+    backgroundColor: 'transparent', /*#e1f7ff*/
     regionsSelectable: true,
     regionsSelectableOne: true,
     regionStyle: {
@@ -25,7 +25,7 @@ function drawMap(mapData) {
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
-      label.html('<b>'+label.html()+'</b></br>'+ mapData[code]);
+      label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
     },
 
     onRegionSelected: function(event, label, isSelected) {
