@@ -77,11 +77,11 @@ function findMeanValue(map) {
 
 function meanValues(data) {
 	map = {};
-	console.log(data);
 	for(var key in data) {
 		map[key] = findMeanValue(data[key]);
 	}
-
+	console.log(data);
+	console.log(map);
 	return map;
 }
 
@@ -91,7 +91,6 @@ function happinessScore(data, means) {
 		score = 0;
 		for(var k2 in data[k1]) {
 			score = data[k1][k2] / means[k2];
-			console.log(score);
 		}
 		map[k1] = score;
 	}

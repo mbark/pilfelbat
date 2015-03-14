@@ -46,7 +46,7 @@ function drawMap(data) {
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
       regionName = label.html();
-      label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
+      label.html('<b>'+label.html()+'s län</b></br> Score: '+ happiness[code].toFixed(3));
       
     },
     /*onRegionClick: function(event, code){
@@ -64,7 +64,7 @@ function drawMap(data) {
          //define the coloration method
          attribute: 'fill',
          //define the array of country data
-         values: mapData
+         values: happiness
        }]
      },
 
@@ -106,10 +106,10 @@ $(document).ready(function() {
   data = {};
   money(function(money) {
     data["money"] = money;
-    health(function(health) {
-      data["health"] = health;
-      people(function(people) {
-        data["people"] = people;
+    people(function(people) {
+      data["people"] = people;
+      health(function(health) {
+        data["health"] = health;
         married(function(married) {
           data["married"] = married;
           work(function(work) {
@@ -117,7 +117,7 @@ $(document).ready(function() {
             drawMap(data);
           });
         });
-      });
+      }, people);
     });
   });
 });
