@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <meta charset="UTF-8">
+
   <title>Lyckokollen</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="jquery-jvectormap-2.0.2.min.js"></script>
   <script src="jquery-jvectormap-se-merc-en.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <style>
+  body {
+    background-color: #21CCBB;
+  }
+
+  #headerbg{
+    background-color: #FFFBED;
+  }
+
+  </style>
+  
+
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
   <script src="api-connection.js"></script>
+
 </head>
 
-<body bgcolor="#21CCBB">
-  <div class="container" style="color:#FFFBED">
+<body>
+  <div class="container" id="headerbg">
+    
     <div class="row">
-      <div class="col-md-4">hej</div>
+      <div class="col-md-4">---</div>
       <div class="col-md-4">LYCKOKOLLEN</div>
-      <div class="col-md-4">hej</div>
+      <div class="col-md-4">---</div>
     </div>
-    <div class="row" id="map" style="width: 400px; height: 500px"></div>
   </div>
   <script>
 
     $(function(){
 
-      var data = {"SE-N": "35", "SE-D": "15", "SE-F": "17", "SE-H": "20", "SE-W": "10"}
+      /*SE-O: 'Västra Götaland', SE-N: 'Halland',
+      SE-M: 'Skåne', SE-K: 'Blekinge',
+      SE-I: 'Gotland', SE-H: 'Kalmar',
+      SE-G: 'Kronoberg', SE-F: 'Jönköping',
+      SE-E: 'Östergötland', SE-D: 'Södermanland',
+      SE-C: 'Uppsala', SE-W: 'Dalarna',
+      SE-Z: 'Jämtland', SE-Y: 'Västernorrland',
+      SE-X: 'Gävleborg', SE-AC: 'Västerbotten',
+      SE-AB: 'Stockholm', SE-U: 'Västmanland',
+      SE-T: 'Örebro', SE-S: 'Värmland',
+      SE-BD: 'Norrbotten'*/
+      var data = {
+        "SE-O": "35", 
+        "SE-N": "15", 
+        "SE-M": "17", 
+        "SE-K": "20",
+        "SE-I": "35", 
+        "SE-H": "15", 
+        "SE-G": "17", 
+        "SE-F": "20",  
+        "SE-E": "10",
+        "SE-D": "35", 
+        "SE-C": "15", 
+        "SE-W": "17", 
+        "SE-Z": "20",
+        "SE-Y": "35", 
+        "SE-X": "15", 
+        "SE-AC": "17", 
+        "SE-AB": "20", 
+        "SE-U": "35", 
+        "SE-T": "15", 
+        "SE-S": "17", 
+        "SE-BD": "20"  
+      }
 
       $('#map').vectorMap({
         map: 'se_merc_en',
@@ -50,7 +104,6 @@
           
           //Text on label shown when hovering
           //event.preventDefault(); // remove label 
-          //label.html('helo'); //Set label text
           onRegionTipShow: function(event, label, code){ 
             label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
           },
@@ -67,13 +120,18 @@
                values: data
              }]
            }
+          onRegionSelected: function(){
+            //When region is selected
+          }
 
-         });
+        //End of .vectorMap
+        });
 
-/*End of function*/
-});
+    //End of function
+    });
 
 
-</script>
+  </script>
+
 </body>
 </html>
