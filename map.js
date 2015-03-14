@@ -46,10 +46,15 @@ function drawMap(data) {
 
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
-    onRegionTipShow: function(event, label, code){ 
-      regionName = label.html();
-      label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
-      
+    onRegionTipShow: function(event, label, code){   
+      if (label.html() == 'Orebro') { 
+        regionName = 'Örebro';
+        label.html('<div id="tooltip"><b>Örebros län</b></br>'+ mapData[code]+'</div>'); //Set label text
+      }
+      else{
+        regionName = label.html();
+        label.html('<div id="tooltip"><b>'+label.html()+'s län</b></br>'+ mapData[code]+'</div>');
+      }
     },
     /*onRegionClick: function(event, code){
       event.preventDefault();
@@ -88,15 +93,15 @@ function drawMap(data) {
       '</div>'+
       '<div class="row" style="margin-bottom:50px;">'+
       '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b>' + income + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b>' + income + ' SEK</p></div>'+
       '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + working + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + working + ' %</p></div>'+
       '</div>'+
       '<div class="row">'+
       '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter""></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Sjukfall: </b>' + unhealthy + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Sjukfall: </b>' + unhealthy + ' %</p></div>'+
       '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + ' %</p></div>'+
       '</div>'
       $('#stats').html(htmlString);
     }
