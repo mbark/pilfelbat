@@ -42,7 +42,8 @@
   
 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="api-connection.js"></script>
+  <script src="api.js"></script>
+  <script src="map.js"></script>
 
 </head>
 
@@ -57,99 +58,8 @@
       <div class="col-md-5" id="map" style="width: 600px; height: 500px"></div>
       <div class="col-md-7" id="stats"></div>
     </div>
-
+    <div id="map"></div>
   </div>
 
-  <script>
-
-    $(function(){
-
-      /*SE-O: 'Västra Götaland', SE-N: 'Halland',
-      SE-M: 'Skåne', SE-K: 'Blekinge',
-      SE-I: 'Gotland', SE-H: 'Kalmar',
-      SE-G: 'Kronoberg', SE-F: 'Jönköping',
-      SE-E: 'Östergötland', SE-D: 'Södermanland',
-      SE-C: 'Uppsala', SE-W: 'Dalarna',
-      SE-Z: 'Jämtland', SE-Y: 'Västernorrland',
-      SE-X: 'Gävleborg', SE-AC: 'Västerbotten',
-      SE-AB: 'Stockholm', SE-U: 'Västmanland',
-      SE-T: 'Örebro', SE-S: 'Värmland',
-      SE-BD: 'Norrbotten'*/
-      var data = {
-        "SE-O": "35", 
-        "SE-N": "15", 
-        "SE-M": "17", 
-        "SE-K": "20",
-        "SE-I": "35", 
-        "SE-H": "15", 
-        "SE-G": "17", 
-        "SE-F": "20",  
-        "SE-E": "10",
-        "SE-D": "35", 
-        "SE-C": "15", 
-        "SE-W": "17", 
-        "SE-Z": "20",
-        "SE-Y": "35", 
-        "SE-X": "15", 
-        "SE-AC": "17", 
-        "SE-AB": "20", 
-        "SE-U": "35", 
-        "SE-T": "15", 
-        "SE-S": "17", 
-        "SE-BD": "20"  
-      }
-
-      $('#map').vectorMap({
-        map: 'se_merc_en',
-        backgroundColor: '#fbfaf5', /*#e1f7ff*/
-        regionsSelectable: true,
-        regionsSelectableOne: true,
-        regionStyle: {
-          initial: {
-            fill: 'white',
-            "fill-opacity": 1,
-            stroke: 'black',
-            "stroke-width": 2,
-            "stroke-opacity": 1
-          },
-            hover: { // other style when hovering a region
-              "fill-opacity": 0.5
-            },
-            selected: { // other style when a region is selected
-              fill: 'yellow'
-            },
-            selectedHover: {} // other styles when hovering a selected region
-          },
-          
-          //Text on label shown when hovering
-          //event.preventDefault(); // remove label 
-          onRegionTipShow: function(event, label, code){ 
-            label.html('<b>'+label.html()+'</b></br>'+'Lyckoprocent:..');
-          },
-
-          series: {
-           regions: [{
-               //define the range of color values
-               scale: ['#DEEBF7', '#08519C'],
-               //define the function that maps data to color range polynomial/linear
-               normalizeFunction: 'linear',
-               //define the coloration method
-               attribute: 'fill',
-               //define the array of country data
-               values: data
-             }]
-           }
-          /*onRegionSelected: function(){
-            //When region is selected
-          }*/
-
-        //End of .vectorMap
-        });
-
-    //End of function
-    });
-
-
-  </script>
 </body>
 </html>
