@@ -89,7 +89,7 @@ function drawMap(data) {
 
       var htmlString = 
       '<div class="row" style="margin-bottom:75px;">'+
-      '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2>'+
+      '<div class="col-md-12"><h2>Lyckostatistik för <b>'+regionName+'s län</b></h2>'+
       '<h3>Antal invånare: '+people+'</h3></div>'+
       '</div>'+
       '<div class="row" style="margin-bottom:50px;">'+
