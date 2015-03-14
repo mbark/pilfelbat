@@ -28,6 +28,15 @@ function drawMap(mapData) {
       label.html('<b>'+label.html()+'</b></br>'+ mapData[code]);
     },
 
+    onRegionSelected: function(event, label, isSelected) {
+      if(isSelected) {
+        console.log("Selected " + label);
+        $("#stats").text(label);
+      } else {
+        console.log("Deselected " + label);
+      }
+    },
+
     series: {
      regions: [{
          //define the range of color values
