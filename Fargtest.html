@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Lyckokollen</title>
   <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="jquery-jvectormap-2.0.2.min.js"></script>
   <script src="jquery-jvectormap-se-merc-en.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="api-connection.js"></script>
 </head>
 
 <body bgcolor="#21CCBB">
@@ -18,30 +20,30 @@
     </div>
     <div class="row" id="map" style="width: 400px; height: 500px"></div>
   </div>
-    <script>
+  <script>
 
-      $(function(){
+    $(function(){
 
-        var data = {"SE-N": "35", "SE-D": "15", "SE-F": "17", "SE-H": "20", "SE-W": "10"}
+      var data = {"SE-N": "35", "SE-D": "15", "SE-F": "17", "SE-H": "20", "SE-W": "10"}
 
-        $('#map').vectorMap({
-          map: 'se_merc_en',
-          backgroundColor: '#FFFBED', /*#e1f7ff*/
-          regionsSelectable: true,
-          regionsSelectableOne: true,
-          regionStyle: {
-            initial: {
-                fill: 'white',
-                "fill-opacity": 1,
-                stroke: 'black',
-                "stroke-width": 2,
-                "stroke-opacity": 1
-            },
+      $('#map').vectorMap({
+        map: 'se_merc_en',
+        backgroundColor: '#FFFBED', /*#e1f7ff*/
+        regionsSelectable: true,
+        regionsSelectableOne: true,
+        regionStyle: {
+          initial: {
+            fill: 'white',
+            "fill-opacity": 1,
+            stroke: 'black',
+            "stroke-width": 2,
+            "stroke-opacity": 1
+          },
             hover: { // other style when hovering a region
-                "fill-opacity": 0.5
+              "fill-opacity": 0.5
             },
             selected: { // other style when a region is selected
-                fill: 'yellow'
+              fill: 'yellow'
             },
             selectedHover: {} // other styles when hovering a selected region
           },
@@ -54,7 +56,7 @@
           },
 
           series: {
-             regions: [{
+           regions: [{
                //define the range of color values
                scale: ['#DEEBF7', '#08519C'],
                //define the function that maps data to color range polynomial/linear
@@ -66,12 +68,12 @@
              }]
            }
 
-        });
+         });
 
-      /*End of function*/
-      });
-    
+/*End of function*/
+});
 
-  </script>
+
+</script>
 </body>
 </html>
