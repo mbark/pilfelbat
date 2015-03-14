@@ -2,7 +2,7 @@
 function drawMap(mapData) {
   $('#map').vectorMap({
     map: 'se_merc_en',
-    backgroundColor: '#FFFBED', /*#e1f7ff*/
+    backgroundColor: 'transparent', /*#e1f7ff*/
     regionsSelectable: true,
     regionsSelectableOne: true,
     regionStyle: {
@@ -25,7 +25,7 @@ function drawMap(mapData) {
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
-      label.html('<b>'+label.html()+'</b></br>'+ mapData[code]);
+      label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
     },
 
     onRegionSelected: function(event, label, isSelected) {
@@ -48,7 +48,24 @@ function drawMap(mapData) {
          //define the array of country data
          values: mapData
        }]
-     }
+     },
+     onRegionSelected: function(){
+        var htmlString = 
+          '<div class="row">'+
+            '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
+            '<div class="col-md-4">Medelinkomst: </div>'+
+            '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
+            '<div class="col-md-4">Andel med jobb: </div>'+
+          '</div>'+
+          '<div class="row">'+
+            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
+            '<div class="col-md-4"></div>'+
+            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
+            '<div class="col-md-4"></div>'+
+          '</div>'
+        $('#stats').html(htmlString);
+    }
+
    });
 }
 
