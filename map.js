@@ -95,15 +95,15 @@ function drawMap(data) {
             '</div>'+
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-            '<div class="col-md-4">Medelinkomst: '+DATA+'</div>'+
+            '<div class="col-md-4">Medelinkomst: '+'DATA'+'</div>'+
             '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
-            '<div class="col-md-4">Andel sysselsatta: '+DATA+'</div>'+
+            '<div class="col-md-4">Andel sysselsatta: '+'DATA'+'</div>'+
           '</div>'+
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-            '<div class="col-md-4">Sjukfall: '+DATA+'</div>'+
+            '<div class="col-md-4">Sjukfall: '+'DATA'+'</div>'+
             '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
-            '<div class="col-md-4">Nygifta: '+DATA+'</div>'+
+            '<div class="col-md-4">Nygifta: '+'DATA'+'</div>'+
           '</div>'
         $('#stats').html(htmlString);
     }
