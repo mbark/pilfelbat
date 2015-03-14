@@ -17,8 +17,9 @@ function drawMap(mapData) {
         "fill-opacity": 0.5
       },
       selected: { // other style when a region is selected
-        stroke: 'red',
-        "stroke-width": 5
+        stroke: "#FCFCC9",
+        "stroke-width": 2,
+        "stroke-opacity": 1
       },
       selectedHover: {} // other styles when hovering a selected region
     },
@@ -74,3 +75,16 @@ function drawMap(mapData) {
 
    });
 }
+
+$(document).ready(function() {
+  data = [];
+  money(function(money) {
+    data["money"] = money;
+    health(function(health) {
+      data["health"] = health;
+      drawMap(health);
+
+      console.log(data);
+    });
+  });
+});
