@@ -1,5 +1,7 @@
 
 function drawMap(mapData) {
+  var regionName = "";
+
   $('#map').vectorMap({
     map: 'se_merc_en',
     backgroundColor: 'transparent', /*#e1f7ff*/
@@ -27,7 +29,9 @@ function drawMap(mapData) {
     //Text on label shown when hovering
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
+      regionName = label.html();
       label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
+      
     },
 
     onRegionSelected: function(event, label, isSelected) {
@@ -53,10 +57,13 @@ function drawMap(mapData) {
      },
      onRegionSelected: function(){
         var htmlString = 
+        '<div class="row">'+
+            '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
+            '</div>'+
           '<div class="row">'+
             '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
             '<div class="col-md-4">Medelinkomst: </div>'+
-            '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
+            '<div class="col-md-2"><i class="fa fa-building-o fa-5x" style="padding-left: 7.5px;"></i></div>'+
             '<div class="col-md-4">Andel med jobb: </div>'+
           '</div>'+
           '<div class="row">'+
