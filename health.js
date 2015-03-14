@@ -1,4 +1,4 @@
-function health(callback) {
+function health(callback, people) {
 	url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/SF/SF0203/PSjukfallAlder";
 	query = {
 		"query": [
@@ -69,7 +69,7 @@ function health(callback) {
 
 		for(i = 0; i<resp.data.length; i++) {
 			key = resp.data[i].key[0];
-			val = resp.data[i].values[0];
+			val = people[indexToLanCode(key)] - resp.data[i].values[0];
 
 			mapping[indexToLanCode(key)] = val;
 		}

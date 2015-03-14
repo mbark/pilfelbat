@@ -64,3 +64,36 @@ function sendRequest(url, query, callback) {
 		dataType: "json"
 	});
 }
+
+function findMeanValue(map) {
+	sum = 0;
+	count = 0;
+	for(var key in map) {
+		sum = sum + parseInt(map[key]);
+		count++;
+	}
+	return sum/count;
+}
+
+function meanValues(data) {
+	map = {};
+	for(var key in data) {
+		map[key] = findMeanValue(data[key]);
+	}
+	console.log(data);
+	console.log(map);
+	return map;
+}
+
+function happinessScore(data, means) {
+	map = {};
+	for(var k1 in data) {
+		score = 0;
+		for(var k2 in data[k1]) {
+			score = data[k1][k2] / means[k2];
+		}
+		map[k1] = score;
+	}
+
+	return map;
+}
