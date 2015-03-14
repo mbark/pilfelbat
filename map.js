@@ -51,3 +51,16 @@ function drawMap(mapData) {
      }
    });
 }
+
+$(document).ready(function() {
+  data = [];
+  money(function(money) {
+    data["money"] = money;
+    health(function(health) {
+      data["health"] = health;
+      drawMap(health);
+
+      console.log(data);
+    });
+  });
+});
