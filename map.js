@@ -1,27 +1,27 @@
 function mergeData(data) {
-
-  console.log(data);
   map = {};
   for (var key in data["people"]) {
-    arr = [];
-
-    for(k2 in data) {
-      m = {}
-      m[k2] = data[k2][key];
-
-      arr.push(m);;
+    if(map[key] === undefined) {
+      map[key] = {};
     }
-
-    map[key] = arr;
+    for(k2 in data) {
+      map[key][k2] = data[k2][key];
+    }
   }
 
-  console.log(map);
-  return data[0];
+  return map;
+}
+
+function calculateHappines(data) {
+  return data["people"];
 }
 
 function drawMap(data) {
-  mapData = mergeData(data);
-  var regionName = "";
+  mergedData = mergeData(data);
+  console.log(data);
+  mapData = calculateHappines(data);
+  console.log(mapData);
+  regionName = "";
 
   $('#map').vectorMap({
     map: 'se_merc_en',
@@ -50,17 +50,9 @@ function drawMap(data) {
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
       regionName = label.html();
+      console.log(mapData);
       label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
       
-    },
-
-    onRegionSelected: function(event, label, isSelected) {
-      if(isSelected) {
-        console.log("Selected " + label);
-        $("#stats").text(label);
-      } else {
-        console.log("Deselected " + label);
-      }
     },
     /*onRegionClick: function(event, code){
       event.preventDefault();
@@ -80,26 +72,31 @@ function drawMap(data) {
          values: mapData
        }]
      },
-     onRegionSelected: function(){
-        var htmlString = 
-        '<div class="row" style="margin-bottom:75px;">'+
-            '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
-            '</div>'+
 
-          '<div class="row" style="margin-bottom:50px;">'+
-            '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
-            '<div class="col-md-4" style="padding-left: -16px; padding-right:-16px;"><p class="vertcenter">Medelinkomst:</p> </div>'+
-            '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter" style="padding-left: 7.5px;"></i></div>'+
-            '<div class="col-md-4" style="padding-left: -16px; padding-right:-16px;"><p class="vertcenter">Andel med jobb: </p></div>'+
-          '</div>'+
-          '<div class="row">'+
-            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter"></i></div>'+
-            '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter">Sjukhusvistelser: <br/>Dödsfall: </p></div>'+
-            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
-            '<div class="col-md-4"></div>'+
+     onRegionSelected: function(event, label, isSelected){
+      if(!isSelected) {
+        return;
+      }
 
-          '</div>'
-        $('#stats').html(htmlString);
+      regionData = mergedData[label];
+
+      var htmlString = 
+      '<div class="row" style="margin-bottom:75px;">'+
+      '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
+      '</div>'+
+      '<div class="row" style="margin-bottom:50px;">'+
+      '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter"></i></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b>' + regionData["money"] + '</p></div>'+
+      '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter"></i></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + regionData["work"] + '</p></div>'+
+      '</div>'+
+      '<div class="row">'+
+      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter""></i></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Sjukfall: </b>' + regionData["health"] + '</p></div>'+
+      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter"></i></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + regionData["married"] + '</p></div>'+
+      '</div>'
+      $('#stats').html(htmlString);
     }
 
   });
