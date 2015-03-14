@@ -51,19 +51,18 @@ function drawMap(mapData) {
      },
      onRegionSelected: function(){
         var htmlString = 
-          '<div><i class="fa fa-money"></i>Hej</div>'
-          /*'<div class="row">'+
-            '<div class="col-md-3"><i class="fa fa-money"></i></div>'+
-            '<div class="col-md-3"></div>'+
-            '<div class="col-md-3"><i class="fa fa-building-o"></i></div>'+
-            '<div class="col-md-3"></div>'+
+          '<div class="row">'+
+            '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
+            '<div class="col-md-4">Medelinkomst: </div>'+
+            '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
+            '<div class="col-md-4">Andel med jobb: </div>'+
           '</div>'+
           '<div class="row">'+
-            '<div class="col-md-3"><i class="fa fa-heartbeat"></i></div>'+
-            '<div class="col-md-3"></div>'+
-            '<div class="col-md-3"><i class="fa fa-heart-o"></i></div>'+
-            '<div class="col-md-3"></div>'+
-          '</div>'*/
+            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
+            '<div class="col-md-4"></div>'+
+            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
+            '<div class="col-md-4"></div>'+
+          '</div>'
         $('#stats').html(htmlString);
     }
 
