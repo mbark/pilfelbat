@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lyckokollen</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="jquery-jvectormap-2.0.2.min.js"></script>
   <script src="jquery-jvectormap-se-merc-en.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <style>
+  body {
+    background-color: #21CCBB;
+  }
+
+  #headerbg{
+    background-color: #FFFBED;
+  }
+
+  </style>
+  
 </head>
 
-<body bgcolor="#21CCBB">
-  <div class="container" style="color:#FFFBED">
+<body>
+  <div class="container" id="headerbg">
+    
     <div class="row">
       <div class="col-md-4">hej</div>
       <div class="col-md-4">LYCKOKOLLEN</div>
       <div class="col-md-4">hej</div>
     </div>
-    <div class="row" id="map" style="width: 400px; height: 500px"></div>
   </div>
     <script>
 
@@ -73,5 +87,9 @@
     
 
   </script>
+
+
+
+
 </body>
 </html>
