@@ -109,6 +109,10 @@ function drawMap(data) {
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Antal friska: </b><br/>' + unhealthy + '%</p></div>'+
       '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter turqcolor"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b><br/>' + newlyMarried + '%</p></div>'+
+      '</div>'+
+      '<div class="row">'+
+      '<div class="col-md-2"><i class="fa fa-trophy fa-5x" style="color:#fbd57a;"></i></div>'+
+      '<div class="col-md-10"><h1 class="vertcenter"><b>#</b></h1></div>'+
       '</div>'
       $('#stats').html(htmlString);
     }
