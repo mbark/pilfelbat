@@ -82,20 +82,6 @@
 
       $('#map').vectorMap({
         map: 'se_merc_en',
-        backgroundColor: '#transparent', /*#e1f7ff*/
-        regionsSelectable: true,
-        regionsSelectableOne: true,
-        regionStyle: {
-          initial: {
-              fill: 'white',
-              "fill-opacity": 1,
-              stroke: 'black',
-              "stroke-width": 2,
-              "stroke-opacity": 1
-          },
-
-      $('#map').vectorMap({
-        map: 'se_merc_en',
         backgroundColor: '#FFFBED', /*#e1f7ff*/
         regionsSelectable: true,
         regionsSelectableOne: true,
@@ -134,11 +120,15 @@
                values: data
              }]
            }
+          onRegionSelected: function(){
+            //When region is selected
+          }
 
-         });
+        //End of .vectorMap
+        });
 
-/*End of function*/
-});
+    //End of function
+    });
 
 
   </script>
