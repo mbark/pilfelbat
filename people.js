@@ -56,7 +56,6 @@ function people(callback) {
 	};
 
 	sendRequest(url, query, function(resp) {
-		console.log(resp);
 		mapping = {};
 
 		for(i = 0; i<resp.data.length; i++) {
