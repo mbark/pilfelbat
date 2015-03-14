@@ -1,11 +1,11 @@
-function people(callback) {
-	url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/BE/BE0101/BE0101A/BefolkningNy";
+function work(callback) {
+	url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/START/AM/AM0401/AM0401N/NAKUSysselAnkLAr";
 	query = {
 		"query": [
 		{
 			"code": "Region",
 			"selection": {
-				"filter": "vs:RegionLän07",
+				"filter": "vs:RegionLän99EjAggr",
 				"values": [
 				"01",
 				"03",
@@ -32,11 +32,20 @@ function people(callback) {
 			}
 		},
 		{
+			"code": "Anknytningsgrad",
+			"selection": {
+				"filter": "item",
+				"values": [
+				"SYSTOT"
+				]
+			}
+		},
+		{
 			"code": "ContentsCode",
 			"selection": {
 				"filter": "item",
 				"values": [
-				"BE0101N1"
+				"AM0401VJ"
 				]
 			}
 		},
@@ -60,12 +69,11 @@ function people(callback) {
 
 		for(i = 0; i<resp.data.length; i++) {
 			key = resp.data[i].key[0];
-			val = resp.data[i].values[0];
+			val = resp.data[i].values[0]*1000;
 
 			mapping[indexToLanCode(key)] = val
 		}
 
 		callback(mapping);
 	});
-
-};
+}

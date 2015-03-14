@@ -50,12 +50,17 @@ function indexToLanCode(i) {
 	return indexToLanCodes[i];
 }
 
+function error() {
+	console.log("Unbale to perform request");
+}
+
 function sendRequest(url, query, callback) {
 	$.ajax({
 		url: url,
 		type: "POST",
 		data: JSON.stringify(query),
 		success: callback,
+		error: error,
 		dataType: "json"
 	});
 }
