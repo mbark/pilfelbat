@@ -9,6 +9,7 @@
   <title>Lyckokollen</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,600italic' rel='stylesheet' type='text/css'>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="jquery-jvectormap-2.0.2.min.js"></script>
   <script src="jquery-jvectormap-se-merc-en.js"></script>
@@ -28,28 +29,40 @@
     width: 400px;
   }
 
+ .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1{
+    font-family: 'Titillium Web', sans-serif;
+    font-style:bold;
+    color:#F8E8F9;
+  }
+
   </style>
   
 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script src="api-connection.js"></script>
+  <script src="api.js"></script>
+  <script src="map.js"></script>
 
 </head>
 
 <body>
-  <div class="container" id="headerbg">
-    
-    <div class="row">
-      <div class="col-md-4">---</div>
-      <div class="col-md-4">LYCKOKOLLEN</div>
-      <div class="col-md-4">---</div>
+  <div class="container">
+    <div class="row" id="headerbg">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center"><h1>LYCKOKOLLEN<h1></div>
+      <div class="col-md-4"></div>
     </div>
     <div class="row">
       <div class="col-md-5" id="map" ></div>
       <div class="col-md-7" id="stats"></div>
     </div>
-
+    <div id="map"></div>
   </div>
+<<<<<<< HEAD
 
   <script>
 
