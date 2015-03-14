@@ -77,7 +77,7 @@ function drawMap(data) {
          //define the array of country data
          values: happiness,
          legend: {
-          horisontal: true,
+          vertical: true,
           cssClass: 'jvectormap-legend-icons'
           }
        }]
