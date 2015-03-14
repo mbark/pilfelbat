@@ -17,7 +17,9 @@ function drawMap(mapData) {
         "fill-opacity": 0.5
       },
       selected: { // other style when a region is selected
-        fill: 'yellow'
+        stroke: "#FCFCC9",
+        "stroke-width": 2,
+        "stroke-opacity": 1
       },
       selectedHover: {} // other styles when hovering a selected region
     },
