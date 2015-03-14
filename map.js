@@ -2,7 +2,7 @@
 function drawMap(mapData) {
   $('#map').vectorMap({
     map: 'se_merc_en',
-    backgroundColor: '#FFFBED', /*#e1f7ff*/
+    backgroundColor: '#FBFAF5', /*#e1f7ff*/
     regionsSelectable: true,
     regionsSelectableOne: true,
     regionStyle: {
@@ -48,6 +48,24 @@ function drawMap(mapData) {
          //define the array of country data
          values: mapData
        }]
-     }
+     },
+     onRegionSelected: function(){
+        var htmlString = 
+          '<div><i class="fa fa-money"></i>Hej</div>'
+          /*'<div class="row">'+
+            '<div class="col-md-3"><i class="fa fa-money"></i></div>'+
+            '<div class="col-md-3"></div>'+
+            '<div class="col-md-3"><i class="fa fa-building-o"></i></div>'+
+            '<div class="col-md-3"></div>'+
+          '</div>'+
+          '<div class="row">'+
+            '<div class="col-md-3"><i class="fa fa-heartbeat"></i></div>'+
+            '<div class="col-md-3"></div>'+
+            '<div class="col-md-3"><i class="fa fa-heart-o"></i></div>'+
+            '<div class="col-md-3"></div>'+
+          '</div>'*/
+        $('#stats').html(htmlString);
+    }
+
    });
 }
