@@ -1,27 +1,27 @@
 function mergeData(data) {
-
-  console.log(data);
   map = {};
   for (var key in data["people"]) {
-    arr = [];
-
-    for(k2 in data) {
-      m = {}
-      m[k2] = data[k2][key];
-
-      arr.push(m);;
+    if(map[key] === undefined) {
+      map[key] = {};
     }
-
-    map[key] = arr;
+    for(k2 in data) {
+      map[key][k2] = data[k2][key];
+    }
   }
 
-  console.log(map);
-  return data[0];
+  return map;
+}
+
+function calculateHappines(data) {
+  return data["people"];
 }
 
 function drawMap(data) {
-  mapData = mergeData(data);
-  var regionName = "";
+  mergedData = mergeData(data);
+  console.log(data);
+  mapData = calculateHappines(data);
+  console.log(mapData);
+  regionName = "";
 
   $('#map').vectorMap({
     map: 'se_merc_en',
@@ -58,17 +58,9 @@ function drawMap(data) {
     //event.preventDefault(); // remove label 
     onRegionTipShow: function(event, label, code){ 
       regionName = label.html();
+      console.log(mapData);
       label.html('<b>'+label.html()+'s län</b></br>'+ mapData[code]);
       
-    },
-
-    onRegionSelected: function(event, label, isSelected) {
-      if(isSelected) {
-        console.log("Selected " + label);
-        $("#stats").text(label);
-      } else {
-        console.log("Deselected " + label);
-      }
     },
     /*onRegionClick: function(event, code){
       event.preventDefault();
@@ -88,24 +80,30 @@ function drawMap(data) {
          values: mapData
        }]
      },
-     onRegionSelected: function(){
-        var htmlString = 
-        '<div class="row">'+
-            '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
-            '</div>'+
-          '<div class="row">'+
-            '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
-            '<div class="col-md-4">Medelinkomst: '+DATA+'</div>'+
-            '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
-            '<div class="col-md-4">Andel sysselsatta: '+DATA+'</div>'+
-          '</div>'+
-          '<div class="row">'+
-            '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
-            '<div class="col-md-4">Sjukfall: '+DATA+'</div>'+
-            '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
-            '<div class="col-md-4">Nygifta: '+DATA+'</div>'+
-          '</div>'
-        $('#stats').html(htmlString);
+     onRegionSelected: function(event, label, isSelected){
+      if(!isSelected) {
+        return;
+      }
+
+      regionData = mergedData[label];
+
+      var htmlString = 
+      '<div class="row">'+
+      '<div class="col-md-12"><h2>Statistik för <b>'+regionName+'s län</b></h2></div>'+
+      '</div>'+
+      '<div class="row">'+
+      '<div class="col-md-2"><i class="fa fa-money fa-5x"></i></div>'+
+      '<div class="col-md-4">Medelinkomst: ' + regionData["money"] + '</div>'+
+      '<div class="col-md-2"><i class="fa fa-building-o fa-5x"></i></div>'+
+      '<div class="col-md-4">Andel sysselsatta: ' + regionData["work"] + '</div>'+
+      '</div>'+
+      '<div class="row">'+
+      '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x"></i></div>'+
+      '<div class="col-md-4">Sjukfall: ' + regionData["health"] + '</div>'+
+      '<div class="col-md-2"><i class="fa fa-heart-o fa-5x"></i></div>'+
+      '<div class="col-md-4">Nygifta: <p id="married"></p>' + regionData["married"] + '</div>'+
+      '</div>'
+      $('#stats').html(htmlString);
     }
 
   });
