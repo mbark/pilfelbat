@@ -76,9 +76,9 @@ function drawMap(data) {
       regionData = mergedData[label];
       income = regionData["money"];
       people = regionData["people"];
-      working = (regionData["work"]/people*100).toFixed(3);
-      unhealthy = (regionData["health"]/people*100).toFixed(3);
-      newlyMarried = (regionData["married"]/people*100).toFixed(3);
+      working = (regionData["work"]/people*100).toFixed(1);
+      unhealthy = (regionData["health"]/people*100).toFixed(1);
+      newlyMarried = (regionData["married"]/people*100).toFixed(1);
 
       var htmlString = 
       '<div class="row" style="margin-bottom:75px;">'+
@@ -89,13 +89,13 @@ function drawMap(data) {
       '<div class="col-md-2"><i class="fa fa-money fa-5x vertcenter turqcolor"></i></div>'+
       '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Medelinkomst: </b>' + income + '</p></div>'+
       '<div class="col-md-2"><i class="fa fa-building-o fa-5x vertcenter turqcolor" style="margin-left:7.5px;"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + working + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Andel sysselsatta: </b>' + working + '%</p></div>'+
       '</div>'+
       '<div class="row">'+
       '<div class="col-md-2"><i class="fa fa-heartbeat fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Sjukfall: </b>' + unhealthy + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><p class="vertcenter"><b>Antal friska: </b>' + unhealthy + '%</p></div>'+
       '<div class="col-md-2"><i class="fa fa-heart-o fa-5x vertcenter turqcolor"></i></div>'+
-      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + '</p></div>'+
+      '<div class="col-md-4" style="padding-left: -16px; padding-right: -16px;"><b><p class="vertcenter" id="married">Nygifta: </b>' + newlyMarried + '%</p></div>'+
       '</div>'
       $('#stats').html(htmlString);
     }
